@@ -23,7 +23,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(data).to.be.an('array');
             expect(data.length).to.be.equal(0);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('should add a record to the data array when add is called', (done) => {
@@ -31,7 +31,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(data).to.be.an('object');
             expect(data.id).to.be.equal(0);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('should update a record in the data array when update is called', (done) => {
@@ -39,7 +39,7 @@ describe('Unit: /dal/SampleDalService', function () {
         SampleDataService.update({ id: 0 , name: 'Bob'}).then((data) => {
             expect(data.name).to.be.equal('Bob');
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('should mark a record as deleted in the data array when remove is called', (done) => {
@@ -48,7 +48,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(result).to.be.equal(true);
             expect(SampleDataService.data[0].deleted).to.be.equal(true);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
 
@@ -58,7 +58,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(data).to.be.an('array');
             expect(data.length).to.be.equal(2);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('shouldnt return deleted records in the data array when remove is called', (done) => {
@@ -67,7 +67,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(data).to.be.an('array');
             expect(data.length).to.be.equal(1);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('should return matching record in the data array when getById is called', (done) => {
@@ -76,7 +76,7 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(item).to.be.an('object');
             expect(item.name).to.be.equal('Bob');
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
     it('should not return matching record in the data array when getById is called and it was deleted', (done) => {
@@ -84,7 +84,7 @@ describe('Unit: /dal/SampleDalService', function () {
         SampleDataService.getById(1).then((item) => {
             expect(item).to.be.equal(undefined);
             done();
-        });
+        }).catch(exception => done(exception));
     });
 
 });
