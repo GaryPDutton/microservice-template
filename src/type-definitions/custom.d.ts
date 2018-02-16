@@ -5,6 +5,7 @@ declare namespace Express {
        log?: any;
        config?: any;
        correlationId?: any;
-       user?: any
+       user?: any;
+       [key: string]: any;
     }
  }

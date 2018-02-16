@@ -1,4 +1,10 @@
 import SampleController from './../controllers/sampleController';
+import sampleCustomValidator from './../middleware/validation/sampleCustomValidator';
+import schemaValidator from './../middleware/schemaValidation';
+
+import getSchema from './../schemas/getSampleDataSchema';
+import addSchema from './../schemas/addSampleDataSchema';
+import schema from './../schemas/sampleDataSchema';
 
 export default function (app: any) {
 
@@ -49,7 +55,7 @@ export default function (app: any) {
      *     }
      *
      */
-    app.get('/api/sample/:id', SampleController.getById);
+    app.get('/api/sample/:id', schemaValidator(getSchema), SampleController.getById);
 
     /**
      * @api {post} '/api/sample/:id' Add a new SampleData Object
@@ -82,7 +88,7 @@ export default function (app: any) {
      *     }
      *
      */
-    app.put('/api/sample/:id', SampleController.put);
+    app.put('/api/sample/:id', schemaValidator(schema), sampleCustomValidator , SampleController.put);
 
     /**
      * @api {put} '/api/sample/:id' Update SampleData Object
@@ -115,9 +121,9 @@ export default function (app: any) {
      *     }
      *
      */
-    app.post('/api/sample/:id', SampleController.post);
+    app.post('/api/sample', schemaValidator(addSchema), SampleController.post);
 
-        /**
+    /**
      * @api {put} '/api/sample/:id' Delete SampleData Object
      * @apiName Delete SampleData
      * @apiGroup SampleApi
@@ -148,6 +154,6 @@ export default function (app: any) {
      *     }
      *
      */
-    app.delete('/api/sample/:id', SampleController.remove);
+    app.delete('/api/sample/:id', schemaValidator(schema), sampleCustomValidator , SampleController.remove);
 
 }

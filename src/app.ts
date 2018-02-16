@@ -16,6 +16,8 @@ import NotFoundError from './errors/NotFoundError';
 import statusRoute from './routes/status';
 import sampleApi from './routes/sampleApi';
 
+import ExpressValidator = require('express-validator');
+
 export default function(config: any) {
     const app = express();
     const log = logger(config);
@@ -32,9 +34,10 @@ export default function(config: any) {
     }));
 
     app.use(bodyParser.json());
-    // Get the cookie from the header and add to request
 
+    // Get the cookie from the header and add to request
     app.use(cookieParser());
+    app.use(ExpressValidator());
 
     // Allow the use of boom when sending errors to user
     app.use(boom());
