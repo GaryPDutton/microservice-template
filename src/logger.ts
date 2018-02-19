@@ -1,9 +1,9 @@
 import * as bunyan from 'bunyan';
 import { LoggerOptions } from 'bunyan';
-import BunyanTransport from './models/BunyanTransport';
-import IQueueConfiguration from './interfaces/IQueueConfiguration';
+import BunyanTransport from './classes/BunyanTransport';
+import IQueueLoggingConfiguration from './interfaces/IQueueLoggingConfiguration';
 
-export default function(config: IQueueConfiguration) {
+export default function(config: IQueueLoggingConfiguration) {
     const loggerOptions = {
         name: config.APP_NAME,
         streams: [

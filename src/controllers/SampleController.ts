@@ -32,7 +32,6 @@ export default class SampleController {
     // put method, updates record
     public static put(req: Request, res: Response, next: NextFunction) {
         const item = req.body;
-        console.log('Item Controller:', item);
         SampleDataService.update(item).then(data => {
             res.status(200).json(data);
         }).catch(next);

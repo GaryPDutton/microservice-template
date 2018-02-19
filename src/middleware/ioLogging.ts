@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import RequestPayload from '../models/RequestPayload';
-import ResponsePayload from '../models/ResponsePayload';
+import RequestPayload from '../classes/RequestPayload';
+import ResponsePayload from '../classes/ResponsePayload';
 
 /**
  * Logs the IO details for this microservice on request and after the response has

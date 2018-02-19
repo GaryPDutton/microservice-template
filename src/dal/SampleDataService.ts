@@ -27,9 +27,8 @@ export default class SampleDataService {
     }
 
     public static getById(id: number) {
-        const foundItem = this.data.filter((item: any) => item.id === id)[0];
-        console.log('Item:', foundItem);
-        return foundItem ? Promise.resolve(foundItem) : Promise.reject(new NotFoundError());
+        const foundItem = this.data.filter((item: any) => item.id === id && !item.deleted)[0];
+        return Promise.resolve(foundItem);
     }
 
     public static add(item: any) {
@@ -39,7 +38,6 @@ export default class SampleDataService {
     }
 
     public static update(item: any) {
-        console.log('Item:', item);
         const index = this.getIndex(item);
 
         if (index !== undefined) {

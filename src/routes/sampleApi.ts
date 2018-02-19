@@ -1,5 +1,5 @@
 import SampleController from './../controllers/sampleController';
-import sampleCustomValidator from './../middleware/validation/sampleCustomValidator';
+import sampleCustomValidator from './../middleware/sampleCustomValidator';
 import schemaValidator from './../middleware/schemaValidation';
 
 import getSchema from './../schemas/getSampleDataSchema';

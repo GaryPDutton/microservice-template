@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import ValidationError from '../../errors/ValidationError';
+import ValidationError from './../errors/ValidationError';
 
 // Simple validation middleware to show how to run some easy logic in the pipeline
 export default (req: Request, res: Response, next: NextFunction)  => {
