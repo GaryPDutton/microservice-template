@@ -12,7 +12,7 @@ export default function(config: IQueueLoggingConfiguration) {
                 stream: process.stdout,
                 level: 'trace',
             },
-            // And to queue that will end up in Kibana
+            // And to queue that will end up in ELK
             {
                 type: 'raw',
                 level: 'trace',

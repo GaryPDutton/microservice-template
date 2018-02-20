@@ -2,8 +2,6 @@ import BunyanTransport from './classes/BunyanTransport';
 import SampleDataService from './dal/SampleDataService';
 import * as sampleQueueSubscriptionController from './controllers/sampleQueueSubscriptionController';
 
-'use strict';
-
 const queueProcessingService = require('./helpers/queueProcessingService/queueProcessingService');
 
 /**

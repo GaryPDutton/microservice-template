@@ -1,0 +1,31 @@
+#####################################################################
+# This is the compose file format (version 1 is now legacy)
+#####################################################################
+version: "2"
+
+#####################################################################
+# SET UP THE QUEUE
+#####################################################################
+services:
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+#####################################################################
+# Setup the API
+#####################################################################
+    microservices-template:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+        ports:
+            - "2456:2456"
+        volumes:
+            - './dist:/opt/microservices-template/dist'
+        environment:
+            APP_PORT: 2456
+            QUEUE_ON: 'true'
+            RABBIT_HOST: rabbitmq
+            LOGS_RABBIT_HOST: rabbitmq

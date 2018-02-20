@@ -1,4 +1,4 @@
-import SampleController from './../controllers/sampleController';
+import SampleController from './../controllers/SampleController';
 import sampleCustomValidator from './../middleware/sampleCustomValidator';
 import schemaValidator from './../middleware/schemaValidation';
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import RequestPayload from './requestPayload';
+import RequestPayload from './RequestPayload';
 
 /**
  * Payload for every response
