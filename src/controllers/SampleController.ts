@@ -9,14 +9,14 @@ export default class SampleController {
 
     // get method, gets all sample data
     public static get(req: Request, res: Response, next: NextFunction) {
-        SampleDataService.get().then(data => {
+        return SampleDataService.get().then(data => {
             res.status(200).json(data);
         }).catch(next);
     }
 
     // getById method, gets record by id
     public static getById(req: Request, res: Response, next: NextFunction) {
-        SampleDataService.getById(parseInt(req.params.id)).then(data => {
+        return SampleDataService.getById(parseInt(req.params.id)).then(data => {
             res.status(200).json(data);
         }).catch(next);
     }
@@ -24,7 +24,7 @@ export default class SampleController {
     // post method, posts new record
     public static post(req: Request, res: Response, next: NextFunction) {
         const newItem = req.body;
-        SampleDataService.add(newItem).then(data => {
+        return SampleDataService.add(newItem).then(data => {
             res.status(200).json(data);
         }).catch(next);
     }
@@ -32,7 +32,7 @@ export default class SampleController {
     // put method, updates record
     public static put(req: Request, res: Response, next: NextFunction) {
         const item = req.body;
-        SampleDataService.update(item).then(data => {
+        return SampleDataService.update(item).then(data => {
             res.status(200).json(data);
         }).catch(next);
     }
@@ -40,7 +40,7 @@ export default class SampleController {
     // remove method, deleted record
     public static remove(req: Request, res: Response, next: NextFunction) {
         const item = req.body;
-        SampleDataService.remove(item).then(data => {
+        return SampleDataService.remove(item).then(data => {
             res.status(200).json(data);
         }).catch(next);
     }

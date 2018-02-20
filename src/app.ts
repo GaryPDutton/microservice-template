@@ -15,8 +15,7 @@ import correlationMiddleware from './middleware/correlationId';
 import NotFoundError from './errors/NotFoundError';
 import statusRoute from './routes/status';
 import sampleApi from './routes/sampleApi';
-
-import ExpressValidator = require('express-validator');
+import queueProcessing from './queueProcessing';
 
 export default function(config: any) {
     const app = express();
@@ -37,7 +36,6 @@ export default function(config: any) {
 
     // Get the cookie from the header and add to request
     app.use(cookieParser());
-    app.use(ExpressValidator());
 
     // Allow the use of boom when sending errors to user
     app.use(boom());
@@ -58,6 +56,8 @@ export default function(config: any) {
 
     // Add sample api routes
     sampleApi(app);
+
+    if (config.QUEUE_ON) queueProcessing(config, log);
 
     // Handle 404 errors
     app.use((req: Request, res: Response, next: NextFunction) => next(new NotFoundError('Not Found')));

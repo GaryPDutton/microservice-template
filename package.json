@@ -21,8 +21,8 @@
     "per-file": true,
     "lines": 90,
     "statements": 90,
-    "functions": 90,
     "branches": 90,
+    "functions": 90,
     "extension": [
       ".ts",
       ".tsx"
@@ -34,7 +34,9 @@
       "dist/**/*.*",
       "build/*.*",
       "coverage/**/*.*",
-      "src/server.ts"
+      "src/server.ts",
+      "src/app.ts",
+      "src/classes/BunyanTransport.ts"
     ],
     "reporter": [
       "html"

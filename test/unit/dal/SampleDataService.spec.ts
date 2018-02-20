@@ -42,6 +42,17 @@ describe('Unit: /dal/SampleDalService', function () {
         }).catch(exception => done(exception));
     });
 
+    it('should return an error if no id is passed in the item to update', (done) => {
+        SampleDataService.data = [{ id: 0 , name: 'Gary'}];
+        SampleDataService.update({name: 'Bob'}).then((result) => {
+            done();
+        }).catch(exception => {
+            expect(exception).to.be.an('Error');
+            done();
+        });
+    });
+
+
     it('should mark a record as deleted in the data array when remove is called', (done) => {
         SampleDataService.data = [{ id: 0 , name: 'Gary'}];
         SampleDataService.remove({ id: 0 , name: 'Gary'}).then((result) => {
@@ -49,6 +60,16 @@ describe('Unit: /dal/SampleDalService', function () {
             expect(SampleDataService.data[0].deleted).to.be.equal(true);
             done();
         }).catch(exception => done(exception));
+    });
+
+    it('should return an error if no id is passed in the item to remove', (done) => {
+        SampleDataService.data = [{ id: 0 , name: 'Gary'}];
+        SampleDataService.remove({name: 'Gary'}).then((result) => {
+            done();
+        }).catch(exception => {
+            expect(exception).to.be.an('Error');
+            done();
+        });
     });
 
 

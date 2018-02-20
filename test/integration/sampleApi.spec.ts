@@ -21,9 +21,10 @@ describe('Integration: Sample api', function () {
         expect(response.body.id).to.be.an('number');
     });
 
-    it('It should get a Not Found error from the GET method when passed an ID that does not exist', async () => {
+    it('It should not get an item or error from the GET method when passed an ID that does not exist', async () => {
         const response = await request(url).get('/api/sample/9999');
-        expect(response.status).to.equal(404);
+        expect(response.status).to.equal(200);
+        expect(response.body).to.be.equal('');
     });
 
     it('It should get a Bad Request error from the GET method when passed an ID that is not a valid int', async () => {

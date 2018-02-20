@@ -9,7 +9,7 @@ import ioLogging from './../../../src/middleware/ioLogging';
 import RequestPayload from './../../../src/classes/RequestPayload';
 import ResponsePayload from './../../../src/classes/ResponsePayload';
 
-describe('src/middleware/io-details', () => {
+describe('src/middleware/ioLogging', () => {
     let fakeLog;
     let fakeRequest;
     let fakeResponse;
